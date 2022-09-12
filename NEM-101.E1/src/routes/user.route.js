@@ -7,6 +7,7 @@ const userDb = fs.readFileSync(`${__dirname}/../../data/users.json`, {
   encoding: 'utf-8',
 });
 let users = JSON.parse(userDb);
+
 const updateDB = (updatedArr) => {
   fs.writeFileSync(
     `${__dirname}/../../data/users.json`,
