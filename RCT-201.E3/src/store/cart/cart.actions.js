@@ -21,7 +21,6 @@ export const getCartItems = () => async (dispatch) => {
   });
   try {
     let res = await axios.get('http://localhost:8080/cartItems');
-    console.log('res for cart get: ', res.data);
     dispatch({
       type: GET_CART_ITEMS_SUCCESS,
       payload: res.data,

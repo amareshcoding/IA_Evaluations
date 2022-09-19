@@ -13,7 +13,7 @@ const Navbar = () => {
   }, []);
   
   let { data } = useSelector((state) => state.cart);
-  console.log('cart length: ', data);
+
   const navigate = useNavigate();
   const handleLoginClick = () => {
     // login screen

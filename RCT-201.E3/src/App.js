@@ -3,8 +3,6 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import RequiredAuth from './hoc/RequiredAuth';
-import Products from './components/Products/Products';
-import Product from './components/Products/Product/Product';
 
 function App() {
   return (
