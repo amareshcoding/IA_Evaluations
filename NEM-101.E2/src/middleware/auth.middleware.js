@@ -2,8 +2,9 @@ const User = require('../models/user.model');
 
 module.exports = async (req, res, next) => {
   try {
+    console.log(req.headers.token);
     //is token present in headers or not
-    if (!!req.headers.token) {
+    if (!req.headers.token) {
       return res.status(401).send({
         message: 'Operation not allowed.',
       });

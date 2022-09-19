@@ -8,7 +8,7 @@ const User = require('../models/user.model');
 
 userRoute.get('/', async (req, res) => {
   try {
-    const user = await User.find({}, { password: 0 }).lean().exec();
+    const user = await User.find({}, { password: 0 });
     return res.send(user);
   } catch (e) {
     return res.status(500).send(e.message);
@@ -23,6 +23,7 @@ userRoute.get('/:id', authMiddleware, async (req, res) => {
     return res.status(500).send(e.message);
   }
 });
+//
 
 userRoute.post('/', async (req, res) => {
   try {
@@ -49,7 +50,7 @@ userRoute.patch('/:id', authMiddleware, async (req, res) => {
 userRoute.delete('/:id', authMiddleware, async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id).lean().exec();
-    return res.send(user);
+    return res.send("");
   } catch (e) {
     return res.status(500).send(e.message);
   }
