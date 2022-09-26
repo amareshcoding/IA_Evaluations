@@ -135,7 +135,7 @@ export const cartReducer = (state = cartInitalState, { type, payload }) => {
         }
         return d;
       });
-      console.log('updatedData', updatedData);
+      // console.log('updatedData', updatedData);
       return {
         ...state,
         updateCartItem: {

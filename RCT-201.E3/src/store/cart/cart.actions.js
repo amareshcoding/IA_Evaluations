@@ -44,7 +44,7 @@ export const addItemToCart = (data) => async (dispatch) => {
     dispatch({ type: ADD_ITEM_TO_CART_ERROR });
   }
 };
-
+// {count: 2}
 export const updateCartItem = (cartId, update) => async (dispatch) => {
   dispatch({
     type: UPDATE_CART_ITEMS_LOADING,
