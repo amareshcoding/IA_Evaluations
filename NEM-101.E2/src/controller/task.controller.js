@@ -5,6 +5,19 @@ const taskRoute = express.Router();
 
 
 
+taskRoute.use(authMiddleware)
+
+
+
+
+
+
+
+
+
+
+
+
 taskRoute.get('/', authMiddleware, async (req, res) => {
   try {
     const [id, mail, pass] = req.headers.token.trim().split(':');
