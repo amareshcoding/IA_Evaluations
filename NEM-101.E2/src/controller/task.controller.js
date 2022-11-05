@@ -3,29 +3,16 @@ const authMiddleware = require('../middleware/auth.middleware');
 const Task = require('../models/task.model');
 const taskRoute = express.Router();
 
-
-
-taskRoute.use(authMiddleware)
-
-
-
-
-
-
-
-
-
-
-
+// taskRoute.use(authMiddleware)
 
 taskRoute.get('/', authMiddleware, async (req, res) => {
   try {
-    const [id, mail, pass] = req.headers.token.trim().split(':');
-
     const page = req.query.page || 1;
     const size = req.query.size || 5;
 
-    const task = await Task.find({ author: id }).skip((page-1)*size).limit(size).lean().exec();
+    const task = await Task.find({ author: req.user._id })
+      .skip((page - 1) * size)
+      .limit(size).populate({path:"aurhor", select:["name", "email", "pic"]});
     return res.send(task);
   } catch (e) {
     return res.status(500).send(e.message);
@@ -43,10 +30,9 @@ taskRoute.get('/:id', authMiddleware, async (req, res) => {
 
 taskRoute.post('/', authMiddleware, async (req, res) => {
   try {
-    const [id, mail, pass] = req.headers.token.trim().split(':');
     const newTask = {
       ...req.body,
-      author: id,
+      author: req.user._id,
     };
     const task = await Task.create(newTask);
     return res.status(201).send('task created successfully');

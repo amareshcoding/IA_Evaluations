@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
     }
 
     //find the user using id
-    const user = await User.findById(id).lean().exec();
+    const user = await User.findById(id);
 
     //check the user exist or not
     if (!user) {
@@ -37,6 +37,7 @@ module.exports = async (req, res, next) => {
     }
 
     //proceed to next/route
+    req.user = user;
     next();
   } catch (e) {
     return res.status(500).send(e.message);

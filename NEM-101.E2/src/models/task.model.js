@@ -22,3 +22,17 @@ module.exports = Task;
 //   gender: { type: String, required: true, enum: ['Male', 'Femail'] },
 //   age: { type: Number, min: 20, max: 100 },
 // });
+// {
+//   content:"jkfglsdjf",
+//   isCompleted:false,
+//   author:'dkjggnljafnlWBF'
+// }
+// {
+//   content:"jkfglsdjf",
+//   isCompleted:false,
+//   author:{
+//     name:"Mr. A",
+//     age:45,
+//     pic: "url"
+//   }
+// }

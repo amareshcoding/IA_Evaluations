@@ -1,17 +1,21 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
   addItemToCart,
-  getCartItems,
   removeItemFromCart,
   updateCartItem,
 } from '../../../store/cart/cart.actions';
 
-const Product = ({ id, name, description, cartProps }) => {
-  const [cartCount, setcartCount] = useState(1);
-  let [show, setShow] = useState(true);
+const Product = ({ id, name, description }) => {
+
+  const cart = useSelector((state) =>
+    state.cart.data.find((item) => item.productId === id)
+  );
+
+  let [show, setShow] = useState(cart ? false : true);
+  const [cartCount, setcartCount] = useState(cart ? cart.count : 1);
 
   let dispatch = useDispatch();
 
